@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('styles/user/showUser.css') }}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <div id="showUser-Container">
+        <h1>User Details</h1>
+        <div id="user-actions">
+            <a class="action-button" href="{{ path('app_user_index') }}">Back to List</a>
+            <a class="action-button" href="{{ path('app_profile_show', {'id': user.profile.id}) }}">See profile</a>
+            {% if app.user and "ROLE_SUPER_ADMIN" in app.user.roles %}
+                <a class="action-button roles-button" href="{{ path('app_give_roles', {'id': user.id}) }}">Manage Roles</a>
+            {% endif %}
+            {% if app.user and ("ROLE_SUPER_ADMIN" in app.user.roles or "ROLE_ADMIN" in app.user.roles) %}
+                {{ include('user/_delete_form.html.twig') }}
+            {% endif %}
+
+        </div>
+
+        <table class="tableUser">
+            <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ user.id }}</td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ user.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Lastname</th>
+                <td>{{ user.lastname }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

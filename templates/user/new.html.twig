@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New User{% endblock %}
+{%  block stylesheets %}
+    <link href="{{ asset('styles/security/register.css') }}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <div id="form-container">
+        {{ form_start(form) }}
+        <p class="form-title">Create your account !</p>
+        <div class="input-container">
+            {{ form_row(form.firstname) }}
+        </div>
+        <div class="input-container">
+            {{ form_row(form.lastname) }}
+        </div>
+        <div class="input-container">
+            {{ form_row(form.email) }}
+        </div>
+        <div class="input-container">
+            {{ form_row(form.telephone) }}
+        </div>
+        <div class="input-container">
+            {{ form_row(form.password) }}
+        </div>
+        <button class="btn btn-lg btn-primary submit">{{ button_label|default('Save') }}</button>
+        <a href="{{ path('app_project_index') }}" id="backToList">back to project list</a>
+        {{ form_end(form) }}
+    </div>
+
+
+{% endblock %}

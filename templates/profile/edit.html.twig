@@ -1,0 +1,128 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Profile{% endblock %}
+{% block javascripts %}
+    {% block importmap %}{{ importmap('editProfile') }}{% endblock %}
+{% endblock %}
+{%  block stylesheets %}
+    <link href="{{ asset('styles/profile/editProfile.css') }}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <h1>Edit Profile</h1>
+
+    <div id="editProfile-form">
+        {{ form_start(form) }}
+        <img src="{{ asset('images/pfps/' ~ profile.profilePicture) }}" alt="pfp" id="profilePicture">
+
+        <div class="form-section">
+            <label>Photo de profil</label>
+            {{ form_widget(form.profilePicture) }}
+        </div>
+
+        <div class="form-section">
+            <div id="editPrenomNomTel">
+                <div class="form-fields">
+                    {{ form_label(form.prenom) }}
+                    {{ form_widget(form.prenom) }}
+                    {{ form_errors(form.prenom) }}
+                </div>
+                <div class="form-fields">
+                    {{ form_label(form.nom) }}
+                    {{ form_widget(form.nom) }}
+                    {{ form_errors(form.nom) }}
+                </div>
+                <div class="form-fields">
+                    {{ form_label(form.telephone) }}
+                    {{ form_widget(form.telephone) }}
+                    {{ form_errors(form.telephone) }}
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="form-collections">
+            <div>
+                <label class="labelFormEdit">Compétences</label>
+                <ul class="competences" data-index="{{ form.competences|length > 0 ? form.competences|last.vars.name + 1 : 0 }}"
+                    data-prototype="{{ form_widget(form.competences.vars.prototype)|e('html_attr') }}">
+                    {% for competence in form.competences %}
+                        <li>
+                            {{ form_widget(competence) }}
+                            {{ form_errors(form.competences) }}
+                            <button type="button" class="remove_item_button"><i class="fa-solid fa-trash"></i></button>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <button type="button" class="add_competence_link" data-collection-holder-class="competences">Add a competence</button>
+            </div>
+
+            <hr>
+
+
+            <div>
+                <label class="labelFormEdit">Formations</label>
+                <ul class="formations" data-index="{{ form.formations|length > 0 ? form.formations|last.vars.name + 1 : 0 }}"
+                    data-prototype="{{ form_widget(form.formations.vars.prototype)|e('html_attr') }}">
+                    {% for formation in form.formations %}
+                        <li>
+                            {{ form_widget(formation) }}
+                            {{ form_errors(form.formations) }}
+                            <button type="button" class="remove_item_button"><i class="fa-solid fa-trash"></i></button>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <button type="button" class="add_formation_link" data-collection-holder-class="formations">Add a formation</button>
+            </div>
+
+            <hr>
+
+
+            <div>
+                <label class="labelFormEdit">Expériences</label>
+                <ul class="experiences" data-index="{{ form.experiences|length > 0 ? form.experiences|last.vars.name + 1 : 0 }}"
+                    data-prototype="{{ form_widget(form.experiences.vars.prototype)|e('html_attr') }}">
+                    {% for exp in form.experiences %}
+                        <li>
+                            {{ form_widget(exp) }}
+                            {{ form_errors(form.experiences) }}
+                            <button type="button" class="remove_item_button"><i class="fa-solid fa-trash"></i></button>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <button type="button" class="add_experience_link" data-collection-holder-class="experiences">Add an experience</button>
+            </div>
+
+            <hr>
+
+
+            <div>
+                <label class="labelFormEdit">Centres d'intérets</label>
+                <ul class="centresInterets" data-index="{{ form.centresInterets|length > 0 ? form.centresInterets|last.vars.name + 1 : 0 }}"
+                    data-prototype="{{ form_widget(form.centresInterets.vars.prototype)|e('html_attr') }}">
+                    {% for ci in form.centresInterets %}
+                        <li>
+                            {{ form_widget(ci) }}
+                            {{ form_errors(form.centresInterets) }}
+                            <button type="button" class="remove_item_button"><i class="fa-solid fa-trash"></i></button>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <button type="button" class="add_centresInterets_link" data-collection-holder-class="centresInterets">Add an interest</button>
+            </div>
+        </div>
+
+        <div id="endForm">
+            <button class="btn updateProfile">{{ button_label|default('Update') }}</button>
+            {{ form_end(form) }}
+        </div>
+
+
+        <div class="form-footer">
+            <a href="{{ path('app_profile_index') }}" class="btn-back">Retour à la liste</a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,52 @@
+.user-action{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.normal {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #2ba8fb;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.normal:hover {
+    background-color: #0056b3;
+}
+
+.delete {
+    background-color: #dc3545;
+    border: none;
+    color: #f9f9f9;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.delete:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+    color: black;
+}
+
+.roles{
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #9d2bfb;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.roles:hover {
+    background-color: #8321d1;
+}

@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Project{% endblock %}
+{%  block stylesheets %}
+    <link href="{{ asset('styles/project/projectNew.css') }}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <h1>Create new Project</h1>
+
+    <div id="newProject">
+        {{ form_start(form) }}
+        <div class="formFields">
+            {{ form_label(form.screenshot) }}
+            {{ form_widget(form.screenshot) }}
+        </div>
+        <div class="formFields">
+            {{ form_label(form.title) }}
+            {{ form_widget(form.title) }}
+        </div>
+        <div class="formFields">
+            {{ form_label(form.description) }}
+            {{ form_widget(form.description) }}
+        </div>
+        <div class="formFields">
+            {{ form_label(form.technologies) }}
+            <div id="technologies">
+                {{ form_widget(form.technologies) }}
+            </div>
+        </div>
+        <div class="formFields">
+            {{ form_label(form.link) }}
+            {{ form_widget(form.link) }}
+        </div>
+        <div id="formActions">
+            <button class="btn">{{ button_label|default('Save') }}</button>
+            {{ form_end(form) }}
+
+            <a href="{{ path('app_project_index') }}">back to list</a>
+        </div>
+
+    </div>
+
+{% endblock %}

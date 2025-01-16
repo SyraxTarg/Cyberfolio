@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin interface{% endblock %}
+{%  block stylesheets %}
+    <link href="{{ asset('styles/admin/roles.css') }}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    <div id="giveRolesContainer">
+        <h1>Manage Roles {{ user.email }}</h1>
+
+        {{ form_start(form) }}
+        {{ form_row(form.roles) }}
+        <button class="btn">{{ button_label|default('Save') }}</button>
+        {{ form_end(form) }}
+
+        <a href="{{ path('app_user_show', {'id': user.id}) }}">back to list</a>
+    </div>
+
+{% endblock %}

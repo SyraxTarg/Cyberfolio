@@ -1,0 +1,85 @@
+#showUser-Container {
+    font-family: 'Arial', sans-serif;
+    margin: 20px auto;
+    max-width: 800px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #2ba8fb;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+#user-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.action-button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #2ba8fb;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.action-button:hover {
+    background-color: #0056b3;
+}
+
+.roles-button {
+    background-color: #2ba8fb;
+}
+
+.roles-button:hover {
+    background-color: #0056b3;
+}
+
+.tableUser {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.tableUser th, .tableUser td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 1rem;
+}
+
+.tableUser th {
+    background-color: #f4f4f9;
+    font-weight: bold;
+}
+
+.tableUser td {
+    color: #333;
+}
+
+.tableUser tr:hover {
+    background-color: #f1f1f1;
+}
+
+#user-actions form button {
+    background-color: #dc3545;
+    border: none;
+    color: #f9f9f9;
+}
+
+#user-actions form button:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+    color: black;
+}

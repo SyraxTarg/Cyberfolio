@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CentresInterets{% endblock %}
+
+{% block body %}
+    <h1>CentresInterets</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ centres_interet.id }}</td>
+            </tr>
+            <tr>
+                <th>CentreInteret</th>
+                <td>{{ centres_interet.centreInteret }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_centres_interets_index') }}">back to list</a>
+
+    <a href="{{ path('app_centres_interets_edit', {'id': centres_interet.id}) }}">edit</a>
+
+    {{ include('centres_interets/_delete_form.html.twig') }}
+{% endblock %}

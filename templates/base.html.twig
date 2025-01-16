@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+    {% block stylesheets %}
+    {% endblock %}
+
+    {% block javascripts %}
+        {% block importmap %}{{ importmap('app') }}{% endblock %}
+    {% endblock %}
+</head>
+<body>
+{% block body %}
+    <nav id="navBar" class="navbar-collapse">
+        <div id="logo">
+            <h1><a href="{{ path('app_project_index') }}">Cyberfolio</a></h1>
+        </div>
+        <div id="links">
+            <a href="{{ path('app_profile_index') }}">Profiles</a>
+            <a href="{{ path('app_project_index') }}">Projects</a>
+                {% if app.user %}
+                    {% if "ROLE_SUPER_ADMIN" in app.user.roles or "ROLE_ADMIN" in app.user.roles %}
+                        <a href="{{ path('app_user_index') }}">Users</a>
+                    {% endif %}
+                {% endif %}
+            <div id="account">
+                {% if app.user %}
+                    <a href="{{ path('app_logout') }}"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                {% else %}
+                    <a href="{{ path('app_login') }}"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
+                {% endif %}
+            </div>
+            {% if app.user %}
+                <div id="myAccount">
+                    <a href="{{ path('app_profile_show_my_profile') }}"><i class="fa-solid fa-user"></i> {{ app.user.firstname }} {{ app.user.lastname }}</a>
+                </div>
+            {% endif %}
+
+
+        </div>
+
+
+    </nav>
+
+    {% for label, messages in app.flashes %}
+        <div class="alert alert-{{ label }}">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endfor %}
+
+{% endblock %}
+</body>
+</html>

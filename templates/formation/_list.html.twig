@@ -1,0 +1,9 @@
+<div id="formation-list">
+    {% for formation in formations %}
+        <p>{{ formation.diplome }}</p>
+        <p>{{ formation.etablissement }}</p>
+        <p>{{ formation.lieu }}</p>
+        <p>{{ formation.description }}</p>
+        <p>{{ formation.date }}</p>
+    {% endfor %}
+</div>

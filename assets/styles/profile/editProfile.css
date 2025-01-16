@@ -1,0 +1,184 @@
+#profilePicture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    display: flex;
+    justify-self: center;
+}
+
+
+#editProfile-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: auto;
+    margin-bottom: 10%;
+    padding: 20px;
+}
+
+.form-fields {
+    width: 80%;
+    margin-bottom: 2%;
+}
+
+#editProfile-form input:not([type="checkbox"]),
+#editProfile-form textarea {
+    padding: 4%;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #555;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#editProfile-form input:not([type="checkbox"]):focus,
+#editProfile-form textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.form-collections > div {
+    width: 80%;
+    margin-bottom: 5%;
+}
+
+.form-collections ul {
+    width: 100%;
+}
+
+.form-collections ul li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Espace entre le champ et le bouton */
+    gap: 10px;
+    width: 100%; /* Les éléments de la liste prennent toute la largeur */
+    margin-bottom: 10%;
+
+}
+
+
+.add_competence_link, .add_formation_link, .add_experience_link, .add_centresInterets_link {
+    background-color: #f3f7fe;
+    color: #3b82f6;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.3s;
+    margin-bottom: 5%;
+}
+
+.add_competence_link:hover, .add_formation_link:hover, .add_experience_link:hover, .add_centresInterets_link:hover {
+    background-color: #3b82f6;
+    box-shadow: 0 0 0 5px #3b83f65f;
+    color: #fff;
+}
+
+.remove_item_button {
+    color: #dc3545;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.remove_item_button:hover {
+    background-color: #c82333;
+    box-shadow: 0 0 0 5px #f43f3f;
+    color: #fff;
+}
+
+
+button.btn {
+    padding: 12.5px 30px;
+    border: 0;
+    border-radius: 100px;
+    background-color: #2ba8fb;
+    color: #f9f9f9;
+    font-weight: Bold;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    display: flex;
+    justify-content: center;
+    width: 30%;
+    margin-top: 8%;
+}
+
+button.btn:hover {
+    background-color: #6fc5ff;
+    box-shadow: 0 0 20px #6fc5ff50;
+    transform: scale(1.1);
+}
+
+button.btn:active {
+    background-color: #3d94cf;
+    transition: all 0.25s;
+    -webkit-transition: all 0.25s;
+    box-shadow: none;
+    transform: scale(0.98);
+}
+
+.form-footer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.form-footer .btn-back {
+    color: #6c757d;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.form-footer .btn-back:hover {
+    color: black;
+}
+
+input[type=file] {
+    color: #222245;
+    padding: 8px 12px;
+    background-color: #fff;
+    border: 1px solid #222245;
+}
+
+.form-fields{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+.labelFormEdit{
+    font-weight: bold;
+    text-align: center;
+}
+
+.form-fields label{
+    font-weight: bold;
+}
+
+#endForm{
+    display: flex;
+    justify-content: center;
+}
+
+#editPrenomNomTel{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+
+h1{
+    text-align: center;
+}

@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Project{% endblock %}
+{%  block stylesheets %}
+    <link href="{{ asset('styles/project/projectShow.css') }}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <h1>{{ project.title }}</h1>
+    <div id="showProject-container">
+        <div id="showProject">
+            <img src="{{ asset('images/projects/' ~ project.screenshot) }}" alt="screenshot">
+            <div id="project-actions">
+                <a href="{{ path('app_project_index') }}">back to list</a>
+
+                {% if app.user %}
+                    {% if project.user.id == app.user.id or "ROLE_SUPER_ADMIN" in app.user.roles or "ROLE_ADMIN" in app.user.roles %}
+                        <a href="{{ path('app_project_edit', {'id': project.id}) }}"><i class="fa-solid fa-pen-to-square"></i></a>
+                        {{ include('project/_delete_form.html.twig') }}
+                    {% endif %}
+                {% endif %}
+            </div>
+            <table class="tableProject">
+                <tbody>
+                <tr>
+                    <th>Title</th>
+                    <td>{{ project.title }}</td>
+                </tr>
+                <tr>
+                    <th>Date</th>
+                    <td>{{ project.createdAt ? project.createdAt|date('d-m-Y') : '' }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ project.description }}</td>
+                </tr>
+                <tr>
+                    <th>Link</th>
+                    <td><a href="{{ project.link }}" target="_blank" id="link">{{ project.link }}</a></td>
+                </tr>
+                <tr>
+                    <th>Tech</th>
+                    <td>{% for tech in project.technologies %}
+                            <p class="technos">{{ tech.name }} - Version {{ tech.version }} <img src="{{ asset('images/techLogos/' ~ tech.logo) }}" alt="{{ tech.name }}Logo" class="techLogo"></p>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <th>Creator</th>
+                        {% if app.user %}
+                            <td><a href="{{ path('app_profile_show', {'id': project.user.profile.id}) }}">{{ project.user.firstname }} {{ project.user.lastname }}</a></td>
+                        {% else %}
+                            <td>{{ project.user.firstname }} {{ project.user.lastname }}</td>
+                        {% endif %}
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

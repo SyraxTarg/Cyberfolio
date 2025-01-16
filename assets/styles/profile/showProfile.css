@@ -1,0 +1,137 @@
+#showProfile-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+#profileUser {
+    display: flex;
+    justify-content: center;
+}
+
+#profile-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 10px;
+    margin-top: 20px;
+    align-items: center;
+}
+
+.btnAction,
+#profile-actions form button,
+.logout{
+    display: inline-block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+
+.btnAction {
+    background-color: #2ba8fb;
+    border: 1px solid #2ba8fb;
+}
+
+.btnAction:hover {
+    background-color: #0056b3;
+    border: 1px solid #0056b3;
+    transform: translateY(-2px);
+}
+
+#profile-actions form button {
+    background-color: #dc3545;
+    border: none;
+}
+
+#profile-actions form button:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}
+
+#profile-actions i:hover {
+    color: black;
+}
+
+.logout {
+    background-color: #dc3545;
+    border: none;
+
+}
+
+.logout:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+    color: white;
+}
+
+#showProfile {
+    flex: 1;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10%;
+}
+
+#profilePicture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 20px;
+    border: 3px solid #ddd;
+    display: flex;
+    justify-content: center;
+}
+
+#showProfile h3 {
+    text-align: center;
+    font-size: 24px;
+    margin: 20px 0;
+    color: #333;
+}
+
+.tableProfile {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.tableProfile th,
+.tableProfile td {
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.tableProfile th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    #showProfile-container {
+        flex-direction: column;
+    }
+
+    #profile-actions {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    #profile-actions a,
+    #profile-actions form button {
+        width: 100%;
+    }
+}

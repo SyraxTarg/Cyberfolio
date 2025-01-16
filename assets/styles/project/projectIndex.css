@@ -1,0 +1,145 @@
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 2rem;
+    color: #333;
+}
+
+.projectCard {
+    background-color: #f9f9f9;
+    border-radius: 5%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin-bottom: 20px;
+    overflow: hidden; /* Assure que rien ne dépasse de la carte */
+}
+
+.projectInfo p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
+    word-wrap: break-word; /* Permet de couper les mots longs */
+    overflow: hidden; /* Empêche les débordements */
+    text-overflow: ellipsis; /* Ajoute des "..." si le texte dépasse */
+    max-width: 100%; /* Assure que le texte reste dans les limites */
+}
+
+.projectInfo a {
+    word-wrap: break-word; /* Coupe les liens s'ils sont trop longs */
+    overflow: hidden; /* Empêche le débordement */
+    text-overflow: ellipsis; /* Affiche "..." pour les liens trop longs */
+    display: block; /* Force les liens à être sur une seule ligne */
+    max-width: 100%; /* Garde le lien dans la carte */
+}
+
+.projectInfo {
+    padding: 2%;
+    max-width: 100%; /* Assure que tout le contenu reste à l'intérieur */
+}
+
+#screenshot {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 5%;
+    border-top-right-radius: 5%;
+    margin-bottom: 15px;
+}
+
+
+#projectsList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px;
+}
+
+.projectCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+.projectInfo div a {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px 15px;
+    background-color: #2ba8fb;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 12px;
+    transition: background-color 0.3s;
+}
+
+.projectInfo div a:hover {
+    background-color: #0056b3;
+}
+
+#createNewProject {
+    display: block;
+    text-align: center;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #2ba8fb;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    width: fit-content;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+#createNewProject:hover {
+    background-color: #0056b3;
+}
+
+#projectsList div p {
+    font-size: 16px;
+    color: #777;
+}
+
+
+.link{
+    color: #2ba8fb;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-size: 14px;
+}
+
+.link:hover{
+    color: #0056b3;
+}
+
+.projectTitle{
+    font-weight: bold;
+}
+
+.fa-envelope{
+    color: #2ba8fb;
+}
+
+.fa-git-alt{
+    color: orangered;
+}
+
+.fa-link{
+    color: black;
+}
+
+.linkLogo{
+    display: flex;
+    flex-direction: row;
+    gap: 1%;
+    justify-content: center;
+}
+
+.projectAction{
+    margin-top: 10%;
+}

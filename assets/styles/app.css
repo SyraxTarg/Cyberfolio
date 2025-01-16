@@ -1,0 +1,78 @@
+#navBar {
+    background-color: #222;
+    color: #fff;
+    padding: 1em 2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    margin-bottom: 3vh;
+    z-index: 1000;
+}
+
+#logo a{
+    color: #fff;
+    text-decoration: none;
+}
+
+#links{
+    display: flex;
+    flex-direction: row;
+}
+
+#links a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 15px;
+    font-size: 16px;
+}
+
+#links a:hover {
+    text-decoration: underline;
+}
+
+#account a {
+    color: #f4f4f9;
+    font-weight: bold;
+}
+
+#account a i {
+    margin-right: 5px;
+}
+
+
+.alert {
+    padding: 1em;
+    margin: 1em 2em;
+    border-radius: 5px;
+}
+
+.alert.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.alert.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.alert.alert-warning {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.alert.alert-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+a {
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #1e90ff;
+}
+

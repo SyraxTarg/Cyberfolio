@@ -1,0 +1,174 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un nouveau profil{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <h1>Créer un nouveau profil</h1>
+
+    {{ form_start() }}
+    <div class="form-section">
+        <div id="editPrenomNomTel">
+            <div class="form-fields">
+                {{ form_label(form.prenom) }}
+                {{ form_widget(form.prenom) }}
+            </div>
+            <div class="form-fields">
+                {{ form_label(form.nom) }}
+                {{ form_widget(form.nom) }}
+            </div>
+            <div class="form-fields">
+                {{ form_label(form.telephone) }}
+                {{ form_widget(form.telephone) }}
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="form-collections">
+        <div>
+            <label class="labelFormEdit">Compétences</label>
+            <ul class="competences" data-index="{{ form.competences|length > 0 ? form.competences|last.vars.name + 1 : 0 }}"
+                data-prototype="{{ form_widget(form.competences.vars.prototype)|e('html_attr') }}">
+                {% for competence in form.competences %}
+                    <li>
+                        {{ form_row(competence) }}
+                        <button type="button" class="remove_item_button"><i class="fa-solid fa-trash"></i></button>
+                    </li>
+                {% endfor %}
+            </ul>
+            <button type="button" class="add_competence_link" data-collection-holder-class="competences">Add a competence</button>
+        </div>
+
+        <hr>
+
+
+        <div>
+            <label class="labelFormEdit">Formations</label>
+            <ul class="formations" data-index="{{ form.formations|length > 0 ? form.formations|last.vars.name + 1 : 0 }}"
+                data-prototype="{{ form_widget(form.formations.vars.prototype)|e('html_attr') }}">
+                {% for formation in form.formations %}
+                    <li>
+                        {{ form_row(formation) }}
+                        <button type="button" class="remove_item_button"><i class="fa-solid fa-trash"></i></button>
+                    </li>
+                {% endfor %}
+            </ul>
+            <button type="button" class="add_formation_link" data-collection-holder-class="formations">Add a formation</button>
+        </div>
+
+        <hr>
+
+
+        <div>
+            <label class="labelFormEdit">Expériences</label>
+            <ul class="experiences" data-index="{{ form.experiences|length > 0 ? form.experiences|last.vars.name + 1 : 0 }}"
+                data-prototype="{{ form_widget(form.experiences.vars.prototype)|e('html_attr') }}">
+                {% for exp in form.experiences %}
+                    <li>
+                        {{ form_row(exp) }}
+                        <button type="button" class="remove_item_button"><i class="fa-solid fa-trash"></i></button>
+                    </li>
+                {% endfor %}
+            </ul>
+            <button type="button" class="add_experience_link" data-collection-holder-class="experiences">Add an experience</button>
+        </div>
+
+        <hr>
+
+
+        <div>
+            <label class="labelFormEdit">Centres d'intérets</label>
+            <ul class="centresInterets" data-index="{{ form.centresInterets|length > 0 ? form.centresInterets|last.vars.name + 1 : 0 }}"
+                data-prototype="{{ form_widget(form.centresInterets.vars.prototype)|e('html_attr') }}">
+                {% for ci in form.centresInterets %}
+                    <li>
+                        {{ form_widget(ci) }}
+                        <button type="button" class="remove_item_button"><i class="fa-solid fa-trash"></i></button>
+                    </li>
+                {% endfor %}
+            </ul>
+            <button type="button" class="add_centresInterets_link" data-collection-holder-class="centresInterets">Add an interest</button>
+        </div>
+    </div>
+
+    <button class="btn">{{ button_label|default('Save') }}</button>
+    {{ form_end(form) }}
+
+    <a href="{{ path('app_profile_index') }}">Retour à la liste</a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Gérer les compétences
+            const addCompetenceBtn = document.getElementById('add-competence-btn');
+            const competencesList = document.getElementById('competences-list');
+
+            addCompetenceBtn.addEventListener('click', () => {
+                const listItem = document.createElement('li');
+
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.name = 'competences[]'; // Nom pour envoyer au backend
+                input.placeholder = 'Entrez une compétence';
+                input.required = true;
+
+                const removeBtn = document.createElement('button');
+                removeBtn.type = 'button';
+                removeBtn.textContent = 'Supprimer';
+                removeBtn.addEventListener('click', () => listItem.remove());
+
+                listItem.appendChild(input);
+                listItem.appendChild(removeBtn);
+                competencesList.appendChild(listItem);
+            });
+
+            // Gérer les formations
+            const addFormationBtn = document.getElementById('add-formation-btn');
+            const formationsList = document.getElementById('formations-list');
+
+            addFormationBtn.addEventListener('click', () => {
+                const listItem = document.createElement('li');
+
+                const diplomaInput = document.createElement('input');
+                diplomaInput.type = 'text';
+                diplomaInput.name = 'formations[][diplome]';
+                diplomaInput.placeholder = 'Diplôme';
+                diplomaInput.required = true;
+
+                const institutionInput = document.createElement('input');
+                institutionInput.type = 'text';
+                institutionInput.name = 'formations[][etablissement]';
+                institutionInput.placeholder = 'Établissement';
+                institutionInput.required = true;
+
+                const locationInput = document.createElement('input');
+                locationInput.type = 'text';
+                locationInput.name = 'formations[][lieu]';
+                locationInput.placeholder = 'Lieu';
+
+                const descriptionInput = document.createElement('textarea');
+                descriptionInput.name = 'formations[][description]';
+                descriptionInput.placeholder = 'Description';
+
+                const dateInput = document.createElement('input');
+                dateInput.type = 'date';
+                dateInput.name = 'formations[][date]';
+                dateInput.placeholder = 'Date';
+
+                const removeBtn = document.createElement('button');
+                removeBtn.type = 'button';
+                removeBtn.textContent = 'Supprimer';
+                removeBtn.addEventListener('click', () => listItem.remove());
+
+                listItem.appendChild(diplomaInput);
+                listItem.appendChild(institutionInput);
+                listItem.appendChild(locationInput);
+                listItem.appendChild(descriptionInput);
+                listItem.appendChild(dateInput);
+                listItem.appendChild(removeBtn);
+                formationsList.appendChild(listItem);
+            });
+        });
+    </script>
+{% endblock %}

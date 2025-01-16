@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile index{% endblock %}
+{%  block stylesheets %}
+    <link href="{{ asset('styles/profile/profileIndex.css') }}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <h1>Profile index</h1>
+    <div id="profilesList">
+        {% for profile in profiles %}
+            <div class="profileCard">
+                <img src="{{ asset('images/pfps/' ~ profile.profilePicture) }}" alt="pfp" class="profilePicture">
+                <p>{{ profile.user.firstname}} {{ profile.user.lastname }}</p>
+                <p><i class="fa-solid fa-phone"></i>{{ profile.telephone }}</p>
+                <p><i class="fa-solid fa-envelope"></i>{{ profile.user.email }}</p>
+                <div>
+                    <a href="{{ path('app_profile_show', {'id': profile.id}) }}">show</a>
+                    {% if app.user %}
+                        {%  if profile.id == app.user.id or "ROLE_SUPER_ADMIN" in app.user.roles or "ROLE_ADMIN" in app.user.roles %}
+                            <a href="{{ path('app_profile_edit', {'id': profile.id}) }}">edit</a>
+                        {%  endif %}
+                    {%  endif %}
+                </div>
+            </div>
+        {% else %}
+            <div>
+                <p>no records found</p>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,129 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile{% endblock %}
+{%  block stylesheets %}
+    <link href="{{ asset('styles/profile/showProfile.css') }}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <div id="showProfile-container">
+        <div id="showProfile">
+            <img src="{{ asset('images/pfps/' ~ profile.profilePicture) }}" alt="pfp" id="profilePicture">
+            <p id="profileUser">{{ profile.user.firstname }} {{ profile.user.lastname }}</p>
+            <div id="profile-actions">
+                <a href="{{ path('app_project_by_user', {'id': profile.user.id}) }}" class="btnAction">get projects</a>
+
+                <a href="{{ path('app_profile_index') }}" class="btnAction">back to list</a>
+
+                {% if app.user %}
+                    {% if profile.id == app.user.profile.id %}
+                        <a href="{{ path('app_profile_edit', {'id': profile.id}) }}" class="btnAction"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="{{ path('app_logout') }}" class="logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                        {{ include('profile/_delete_my_profile.html.twig') }}
+                    {% elseif "ROLE_SUPER_ADMIN" in app.user.roles or "ROLE_ADMIN" in app.user.roles %}
+                        <a href="{{ path('app_profile_edit', {'id': profile.id}) }}" class="btnAction"><i class="fa-solid fa-pen-to-square"></i></a>
+                        {{ include('profile/_delete_form.html.twig') }}
+                    {% endif %}
+                {% endif %}
+
+            </div>
+            <table class="tableProfile">
+                <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ profile.id }}</td>
+                </tr>
+                <tr>
+                    <th>First name</th>
+                    <td>{{ profile.user.firstname }}</td>
+                </tr>
+                <tr>
+                    <th>Last name</th>
+                    <td>{{ profile.user.lastname }}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>{{ profile.user.email }}</td>
+                </tr>
+                <tr>
+                    <th>Telephone</th>
+                    <td>{{ profile.telephone }}</td>
+                </tr>
+                <tr>
+                    <th>Competences</th>
+                    <td>
+                        {% for competence in profile.competences %}
+                            <table class="table">
+                                <tbody>
+                                <tr>
+                                    <td>{{ competence.competence }}</td>
+                                    <td>
+                                        {% if competence.hardSkill %}
+                                            hard skill
+                                        {% else %}
+                                            soft skill
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <th>Experiences</th>
+                    <td>
+                        {% for experience in profile.experiences %}
+                            <table class="table">
+                                <tbody>
+                                <tr>
+                                    <td>{{ experience.titre }}</td>
+                                </tr>
+                                <tr>
+                                    <td>{{ experience.lieu }} ~ {{ experience.Date ? experience.Date|date('d-m-Y') : '' }}</td>
+                                </tr>
+                                <tr>
+                                    <td>{{ experience.description }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <th>Formation</th>
+                    <td>
+                        {% for formation in profile.formations %}
+                            <table class="table">
+                                <tbody>
+                                <tr>
+                                    <th>{{ formation.Diplome }}</th>
+                                </tr>
+                                <tr>
+                                    <td>{{ formation.Etablissement }} - {{ formation.Lieu }} ~ {{ formation.Date ? formation.Date|date('d-m-Y') : '' }}</td>
+                                </tr>
+                                <tr>
+                                    <td>{{ formation.Description }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <th>Centres d'intérets</th>
+                    <td>
+                        {% for interet in profile.centresInterets %}
+                            <p>{{ interet.centreInteret }}</p>
+                        {% endfor %}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+{% endblock %}

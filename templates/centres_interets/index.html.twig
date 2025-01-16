@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CentresInterets index{% endblock %}
+
+{% block body %}
+    <h1>CentresInterets index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>CentreInteret</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for centres_interet in centres_interets %}
+            <tr>
+                <td>{{ centres_interet.id }}</td>
+                <td>{{ centres_interet.centreInteret }}</td>
+                <td>
+                    <a href="{{ path('app_centres_interets_show', {'id': centres_interet.id}) }}">show</a>
+                    <a href="{{ path('app_centres_interets_edit', {'id': centres_interet.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_centres_interets_new') }}">Create new</a>
+{% endblock %}

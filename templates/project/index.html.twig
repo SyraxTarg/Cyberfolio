@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Project index{% endblock %}
+{%  block stylesheets %}
+    <link href="{{ asset('styles/project/projectIndex.css') }}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <h1>Project index</h1>
+
+    <a href="{{ path('app_project_new') }}" id="createNewProject">Create new</a>
+    <div id="projectsList">
+        {% for project in projects %}
+            <div class="projectCard">
+                <img src="{{ asset('images/projects/' ~ project.screenshot) }}" alt="screenshot" id="screenshot">
+                <div class="projectInfo">
+                    <p class="projectTitle">{{ project.title }}</p>
+                    <p>{{ project.createdAt ? project.createdAt|date('d-m-Y') : '' }}</p>
+                    <p>{{ project.description|length > 50 ? project.description|slice(0, 50) ~ '...' : project.description  }}</p>
+                    {% if project.link %}
+                        {% if "git" in project.link %}
+                            <p class="linkLogo">
+                                <i class="fa-brands fa-git-alt git"></i>
+                                <a href="{{ project.link }}" target="_blank" class="link">{{ project.link|length > 20 ? project.link|slice(0, 20) ~ '...' : project.link  }}</a>
+                            </p>
+                        {% else %}
+                            <p class="linkLogo">
+                                <i class="fa-solid fa-link normalLink"></i>
+                                <a href="{{ project.link }}" target="_blank" class="link">{{ project.link|length > 20 ? project.link|slice(0, 20) ~ '...' : project.link  }}</a>
+                            </p>
+
+                        {% endif %}
+                    {% endif %}
+                    <p><i class="fa-solid fa-envelope"></i> {{ project.user.email }}</p>
+                    <div class="projectAction">
+                        <a href="{{ path('app_project_show', {'id': project.id}) }}">show</a>
+                        {% if app.user %}
+                            {%  if project.user.profile.id == app.user.id or "ROLE_SUPER_ADMIN" in app.user.roles or "ROLE_ADMIN" in app.user.roles %}
+                                <a href="{{ path('app_project_edit', {'id': project.id}) }}">edit</a>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+        {% else %}
+            <div>
+                <p>no records found</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
