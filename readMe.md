@@ -112,11 +112,11 @@ causé des difficultés sur la création de mes fixtures car mes relations n'ét
 
 ## Bilan des acquis
 
-- php
-- symfony
-- sécurité
-- hiérarchie des roles
-- templating
+Grâce à Symfony, j'ai acquis des compétences clés en développement web structuré. J'ai appris à utiliser **PHP** efficacement et à maîtriser la **sécurité** avec la gestion des rôles via le **bundle sécurité**. Le **templating avec Twig** m'a permis de créer des interfaces modulaires et dynamiques, en exploitant des **blocs** réutilisables. Avec **Composer** et **Asset Mapper**, j’ai optimisé la gestion des dépendances et des ressources front-end.
+
+J'ai également approfondi la manipulation de **formulaires imbriqués**, garantissant leur fonctionnement fluide, et intégré du **JavaScript** pour synchroniser les actions front-end et back-end, comme la suppression dynamique d'éléments. J'ai découvert l'importance des **bundles** modulaires et les **composants UX** pour enrichir les interfaces. Enfin, l’**ORM Doctrine** m’a permis de comprendre et gérer les relations entre entités, comme **One-to-One** et **Many-to-Many**.
+
+Symfony m’a donné une base solide pour concevoir des applications performantes, évolutives et sécurisées.
 
 ## Remarques complémentaires
 
