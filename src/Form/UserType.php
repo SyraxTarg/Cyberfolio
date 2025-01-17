@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -93,11 +94,9 @@ class UserType extends AbstractType
                     'placeholder' => 'Entrez votre numéro de téléphone',
                 ],
             ])
-
-//            ->add('profile', EntityType::class, [
-//                'class' => Profile::class,
-//                'choice_label' => 'id',
-//            ])
+            ->add('birthdayDate', BirthdayType::class, [
+                'label' => 'Date de naissance',
+            ])
         ;
     }
 

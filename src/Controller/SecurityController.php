@@ -42,7 +42,6 @@ class SecurityController extends AbstractController
                 $user->getPassword()
             );
             $user->setPassword($hashedPassword);
-            $user->setBirthdayDate(new \DateTime("now"));
             $user->setUpdatedAt(new \DateTime("now"));
             $user->setCreatedAt(new \DateTime("now"));
             $profile = new Profile();

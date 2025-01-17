@@ -52,6 +52,10 @@
                     <td>{{ profile.telephone }}</td>
                 </tr>
                 <tr>
+                    <th>Birthday</th>
+                    <td>{{ profile.user.birthdayDate| date('d-m-Y') }}</td>
+                </tr>
+                <tr>
                     <th>Competences</th>
                     <td>
                         {% for competence in profile.competences %}

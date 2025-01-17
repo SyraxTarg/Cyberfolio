@@ -26,6 +26,9 @@
         <div class="input-container">
             {{ form_row(form.password) }}
         </div>
+        <div class="input-container">
+            {{ form_row(form.birthdayDate) }}
+        </div>
         <button class="btn btn-lg btn-primary submit">{{ button_label|default('Save') }}</button>
         <a href="{{ path('app_project_index') }}" id="backToList">back to project list</a>
         {{ form_end(form) }}

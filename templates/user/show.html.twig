@@ -44,6 +44,10 @@
                 <th>Roles</th>
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
             </tr>
+            <tr>
+                <th>Birthday</th>
+                <td>{{ user.birthdayDate|date('d-m-Y') }}</td>
+            </tr>
             </tbody>
         </table>
     </div>
