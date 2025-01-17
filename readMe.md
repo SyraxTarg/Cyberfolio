@@ -123,7 +123,43 @@ causé des difficultés sur la création de mes fixtures car mes relations n'ét
 ### Base de données
 ![DB](public/images/readme/db.png)
 
-### Démarrer l'application
+### Installation du projet
+
+#### 1- Récupération du projet
+Dans un terminal:
+
+``git clone https://github.com/SyraxTarg/Cyberfolio.git <nom du dossier>``
+
+#### 2- Installation des dépendances
+Dans un terminal, à la racine du projet:
+
+``composer install``
+
+
+#### 3- Configuration de l'environnement
+- Copiez le fichier `.env` et appelez-le `.env.local`.
+- Configurer dans le fichier .env.local les paramètres de connexion à la base de données en prenant 
+soin de vérifier au préalable le type de serveur de votre environnement (MySQL ou MariaDB).
+- Le fichier est pré-configuré, vous devez juste renseigner vos identifiants de base de données ainsi que APP_SECRET
+
+
+#### 4- Mise en place de la base de données
+Importez la base de données `cyberfolio.sql` du dossier `/data`.
+
+OU
+
+Utilisez les fixtures (ATTENTION: en utilisant cette méthode vous n'aurez pas d'admin ou de super admin)
+
+Dans un terminal:
+
+```
+php bin/console doctrine:database:drop --force --if-exists
+php bin/console doctrine:database:create
+php bin/console doctrine:schema:create 
+php bin/console doctrine:fixtures:load
+```
+
+#### 5- Démarrer l'application
 ```
 symfony server:start
 ```
