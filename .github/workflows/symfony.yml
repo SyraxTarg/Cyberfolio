@@ -14,9 +14,6 @@ jobs:
       - name: Checkout du code
         uses: actions/checkout@v3
 
-      - name: Connexion au registry privé de Minikube
-        run: echo "" | docker login 192.168.49.2:31543 --username admin --password-stdin
-
       - name: Build et push de l’image
         run: |
           docker build -t 192.168.49.2:31543/monapp:latest .
