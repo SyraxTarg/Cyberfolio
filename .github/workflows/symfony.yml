@@ -8,23 +8,21 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: self-hosted  # Exécute sur ta VM
+    runs-on: self-hosted  # Exécute sur ta VM Minikube
 
     steps:
       - name: Checkout du code
         uses: actions/checkout@v3
-        
-      - name: Test de connexion au registry
-        run: curl -X GET http://192.168.49.2:31543/v2/_catalog
 
       - name: Connexion au registry privé de Minikube
-        run: docker login 192.168.49.2:31543
+        run: echo "" | docker login 192.168.49.2:31543 --username admin --password-stdin
 
       - name: Build et push de l’image
         run: |
-          docker build -t 192.168.49.2:31543/cyberfolio:latest .
-          docker push 192.168.49.2:31543/cyberfolio:latest
+          docker build -t 192.168.49.2:31543/monapp:latest .
+          docker push 192.168.49.2:31543/monapp:latest
 
       - name: Déployer sur Minikube
         run: |
+          kubectl delete pod -l app=monapp || true  # Supprime le pod existant pour forcer le redéploiement
           kubectl apply -f k8s/deployment.yaml
